@@ -1,0 +1,174 @@
+{% extends "pages/simplechart.html" %}
+{% block title %}
+Scatter Chart
+{% endblock %}
+
+
+<script>
+    {% block jquery %}
+        var endpoint = '/api/chart/data/'
+        $.ajax({
+            method: "GET",
+            url: endpoint,
+            success: function(data) {
+                console.log(data)
+                console.log(data.customers * 234)
+                setChart()
+            },
+            error: function(error_data) {
+                console.log("error")
+                console.log(error_data)
+            }
+        })
+
+var ctx = document.getElementById('myChart1').getContext('2d');
+var scatterChart = new Chart(ctx, {
+    type: 'scatter',
+    data: {
+        datasets: [{
+            label: 'Scatter Dataset',
+            data: [{
+                x: {{d0}},
+                y: {{c0}}
+            }, {
+                x: {{d1}},
+                y: {{c1}}
+            }, {
+                x: {{d2}},
+                y: {{c2}}
+            }, {
+                x: {{d3}},
+                y: {{c3}}
+            }, {
+                x: {{d4}},
+                y: {{c4}}
+            }, {
+                x: {{d5}},
+                y: {{c5}}
+            }, {
+                x: {{d6}},
+                y: {{c6}}
+            }, {
+                x: {{d7}},
+                y: {{c7}}
+            }, {
+                x: {{d8}},
+                y: {{c8}}
+            }, {
+                x: {{d9}},
+                y: {{c9}}
+            }, {
+                x: {{d10}},
+                y: {{c10}}
+            }, {
+                x: {{d11}},
+                y: {{c11}}
+            }, {
+                x: {{d12}},
+                y: {{c12}}
+            }, {
+                x: {{d13}},
+                y: {{c13}}
+            }, {
+                x: {{d14}},
+                y: {{c14}}
+            }, {
+                x: {{d15}},
+                y: {{c15}}
+            }, {
+                x: {{d16}},
+                y: {{c16}}
+            }, {
+                x: {{d17}},
+                y: {{c17}}
+            }, {
+                x: {{d18}},
+                y: {{c18}}
+            }, {
+                x: {{d19}},
+                y: {{c19}}
+            }, {
+                x: {{d20}},
+                y: {{c20}}
+            }, {
+                x: {{d21}},
+                y: {{c21}}
+            }, {
+                x: {{d22}},
+                y: {{c22}}
+            }, {
+                x: {{d23}},
+                y: {{c23}}
+            }, {
+                x: {{d24}},
+                y: {{c24}}
+            }, {
+                x: {{d25}},
+                y: {{c25}}
+            }, {
+                x: {{d26}},
+                y: {{c26}}
+            }, {
+                x: {{d27}},
+                y: {{c27}}
+            }, {
+                x: {{d28}},
+                y: {{c28}}
+            }, {
+                x: {{d29}},
+                y: {{c29}}
+            }, {
+                x: {{d30}},
+                y: {{c30}}
+            }],
+            borderColor: '#2196f3',
+            backgroundColor: '#2196f3',
+            borderWidth: 5
+        }]
+    },
+    options: {
+        scales: {
+            xAxes: [{
+                type: 'linear',
+                position: 'bottom'
+            }]
+        }
+    }
+});
+
+
+
+
+    {%endblock%}
+</script>
+
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3">
+            <ul style="list-style-type: none;">
+                <li>
+                    <a href="/bar_chart">Bar</a>
+                </li>
+                <li>
+                    <a href="/scatter_chart">Scatter</a>
+                </li>
+                <li>
+                    <a href="/line_chart">Line</a>
+                </li>
+                <li><a href="/pie_chart">Pie</a></li>
+                <li>
+                    <a href="/gant_chart">gantt</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-9">
+            Hello scatter_chart
+            <canvas id="myChart1" width="400" height="200" style="width:5vw"></canvas>
+            
+        </div>
+    </div>
+</div>
+
+{% endblock %}

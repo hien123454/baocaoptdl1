@@ -1,0 +1,38 @@
+{% extends "pages/base.html" %}
+{% block title %}
+Bar Chart
+{% endblock %}
+    
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <ul style="list-style-type: none;">
+                <li>
+                    <a href="/bar_chart">Bar</a>
+                </li>
+                <li>
+                    <a href="/scatter_chart">Scatter</a>
+                </li>
+                <li>
+                    <a href="/line_chart">Line</a>
+                </li>
+                <li><a href="/pie_chart">Pie</a></li>
+                <li>
+                    <a href="/gant_chart">gantt</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-sm-6" url-endpoint='{% url "api-data" %}' style="position: relative; width:45vw">
+            
+            ba
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</div>
+
+{% endblock %}
