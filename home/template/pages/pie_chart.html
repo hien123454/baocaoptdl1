@@ -1,12 +1,243 @@
-{% extends "pages/simplechart.html" %}
+{% extends "pages/base.html" %}
 {% block title %}
 Pie Chart
 {% endblock %}
+<script>
+    {% block jquery %}
+    var endpoint = '/api/chart/data/'
+        $.ajax({
+            method: "GET",
+            url: endpoint,
+            success: function(data) {
+                console.log(data)
+                console.log(data.customers * 234)
+                setChart()
+            },
+            error: function(error_data) {
+                console.log("error")
+                console.log(error_data)
+            }
+        })
+       
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: {{df1980|safe}} ,
+        datasets: [{
+            data: {{dff1980|safe}},
+            label: 'Biểu đồ thể hiện dân số các khu vực năm 1980',
+            
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(127, 65, 183, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(52, 22, 32, 0.2)',
+                'rgba(52, 225, 0, 0.2)',
+                'rgba(000, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(127, 65, 183, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(52, 22, 32, 1)',
+                'rgba(52, 225, 0, 1)',
+                'rgba(000, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
 
+var duc1 = document.getElementById('myChart1').getContext('2d');
+var myChart = new Chart(duc1, {
+    type: 'pie',
+    data: {
+        labels: {{df1990|safe}} ,
+        datasets: [{
+            data: {{dff1990|safe}},
+            label: 'Biểu đồ thể hiện dân số các khu vực năm 1990',
+            
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(127, 65, 183, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(52, 22, 32, 0.2)',
+                'rgba(52, 225, 0, 0.2)',
+                'rgba(000, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(127, 65, 183, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(52, 22, 32, 1)',
+                'rgba(52, 225, 0, 1)',
+                'rgba(000, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
+var duc2 = document.getElementById('myChart2').getContext('2d');
+var myChart = new Chart(duc2, {
+    type: 'pie',
+    data: {
+        labels: {{df2000|safe}} ,
+        datasets: [{
+            data: {{dff2000|safe}},
+            label: 'Biểu đồ thể hiện dân số các khu vực năm 2000',
+            
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(127, 65, 183, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(52, 22, 32, 0.2)',
+                'rgba(52, 225, 0, 0.2)',
+                'rgba(000, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(127, 65, 183, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(52, 22, 32, 1)',
+                'rgba(52, 225, 0, 1)',
+                'rgba(000, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
+var duc3 = document.getElementById('myChart3').getContext('2d');
+var myChart = new Chart(duc3, {
+    type: 'pie',
+    data: {
+        labels: {{df2010|safe}} ,
+        datasets: [{
+            data: {{dff2010|safe}},
+            label: 'Biểu đồ thể hiện dân số các khu vực năm 2010',
+            
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(127, 65, 183, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(52, 22, 32, 0.2)',
+                'rgba(52, 225, 0, 0.2)',
+                'rgba(000, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(127, 65, 183, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(52, 22, 32, 1)',
+                'rgba(52, 225, 0, 1)',
+                'rgba(000, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
+var duc4 = document.getElementById('myChart4').getContext('2d');
+var myChart = new Chart(duc4, {
+    type: 'pie',
+    data: {
+        labels: {{fdna1980|safe}} ,
+        datasets: [{
+            data: {{ffdna1980|safe}},
+            label: 'Biểu đồ thể hiện dân số các nước thuộc khu vực ĐNA năm 1980',
+            
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(127, 65, 183, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(255, 0, 194, 0.2)',
+                'rgba(52, 22, 32, 0.2)',
+                'rgba(255, 99, 71, 0.2)',
+                'rgba(255, 165, 0, 0.2)',
+                'rgba(120, 189, 71, 0.2)',
+                'rgba(0, 0, 194, 0.2)',
+                'rgba(255, 0, 194, 0.2)',
+                'rgba(255, 0, 0, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(127, 65, 183, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(255, 0, 194, 1)',
+                'rgba(52, 22, 32, 1)',
+                'rgba(255, 99, 71, 1)',
+                'rgba(255, 165, 0, 1)',
+                'rgba(120, 189, 71, 1)',
+                'rgba(0, 0, 194, 1)',
+                'rgba(255, 0, 194, 1)',
+                'rgba(255, 0, 0, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
+    {%endblock%}
+</script>
 {% block content %}
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-12">
             <ul style="list-style-type: none;">
                 <li>
                     <a href="/bar_chart">Bar</a>
@@ -23,8 +254,33 @@ Pie Chart
                 </li>
             </ul>
         </div>
-        <div class="col-sm-9">
-            Hello pie_chart
+   
+    
+        <div class="col-sm-6"style="position: relative; width:35vw" >
+            <canvas id="myChart" width="200" height="200"></canvas>
+            <p>Hình 1: Biểu đồ thể hiện dân số các khu vực năm 1980</p>
+        </div>
+
+         <div class="col-sm-6"style="position: relative; width:35vw" >
+            <canvas id="myChart1" width="200" height="200"></canvas>
+            <p>Hình 2: Biểu đồ thể hiện dân số các khu vực năm 1990</p>
+        </div>
+    
+        
+    
+        <div class="col-sm-6"style="position: relative; width:35vw">
+            <canvas id="myChart2" width="200" height="200"></canvas>
+            <p>Hình 3: Biểu đồ thể hiện dân số các khu vực năm 2000</p>
+        </div>
+
+        <div class="col-sm-6"style="position: relative; width:35vw">
+            <canvas id="myChart3" width="200" height="200"></canvas>
+            <p>Hình 4: Biểu đồ thể hiện dân số các khu vực năm 2010</p>
+        </div>
+
+        <div class="col-sm-6"style="position: relative; width:35vw">
+            <canvas id="myChart4" width="200" height="200"></canvas>
+            <p>Hình 5: Biểu đồ thể hiện dân số các nước ĐNA năm 1980</p>
         </div>
     </div>
 </div>

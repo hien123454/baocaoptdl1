@@ -1,4 +1,4 @@
-{% extends "pages/simplechart.html" %}
+{% extends "pages/base.html" %}
 {% block title %}
 Scatter Chart
 {% endblock %}
@@ -26,7 +26,7 @@ var scatterChart = new Chart(ctx, {
     type: 'scatter',
     data: {
         datasets: [{
-            label: 'Scatter Dataset',
+            label: '',
             data: [{
                 x: {{d0}},
                 y: {{c0}}
@@ -164,7 +164,7 @@ var scatterChart = new Chart(ctx, {
             </ul>
         </div>
         <div class="col-sm-9">
-            Hello scatter_chart
+            <h1>Biểu đồ scatter thể hiện sự tương quan giữa dân số qua các năm</h1>
             <canvas id="myChart1" width="400" height="200" style="width:5vw"></canvas>
             
         </div>

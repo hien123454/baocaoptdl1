@@ -21,6 +21,12 @@ def data_table(self):
     data = pd.DataFrame(all_todos)
     return data
 
+def data_table1(self):
+    todo_ref = db.collection('csvjson')
+    all_todos = [doc.to_dict() for doc in todo_ref.stream()]
+    data = pd.DataFrame(all_todos)
+    return data
+##SCATTERHART
 def CounTries(self):
     data = data_table(1)  
     data1 = data.loc[0,["World"]]
@@ -302,20 +308,96 @@ def d2010(self):
      data = data_table(1)  
      d30 = data.loc[30,["Nam"]]
      return list(d30) 
+##LINECHART
+def World(self):
+     data = data_table(1)
+     dfWorld = data.loc[[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],"World"]
+     
+     return list(dfWorld)
+def Year(self):
+     data = data_table(1)
+     dfYear = data.loc[[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],"Nam"]
+     
+     return list(dfYear)
+def North_America(self):
+     data = data_table(1)
+     dfNA = data.loc[[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],"North America"]
+     return list(dfNA)
+def Central_South_America(self):
+     data = data_table(1)
+     dfCSA = data.loc[[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],"Central andSouth America"]
+     return list(dfCSA)
+def Europe(self):
+     data = data_table(1)
+     dfEorope = data.loc[[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],"Europe"]
+     return list(dfEorope)
+def Eurasia(self):
+     data = data_table(1)
+     dfEurasia = data.loc[[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],"Eurasia"]
+     return list(dfEurasia)
+def Middle_East(self):
+     data = data_table(1)
+     dfME = data.loc[[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],"Middle East"]
+     return list(dfME)
+def Africa(self):
+     data = data_table(1)
+     dfA = data.loc[[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],"Africa"]
+     return list(dfA)
+def Asia_Ocean(self):
+     data = data_table(1)
+     dfAO = data.loc[[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],"Asia and Oceania"]
+     return list(dfAO)
+##PIECHART
+#dân sô các khu vực
+def piedf1980(self):
+    data = data_table1(1)  
+    df1980 = data.loc[[0,7,52,94,111,126,183], "CounTries"]
+    dff1980 =  data.loc[[0,7,52,94,111,126,183], "1980"]
+    return list(df1980),list(dff1980)
+def piedf1990(self):
+    data = data_table1(1)  
+    df1990 = data.loc[[0,7,52,94,111,126,183], "CounTries"]
+    dff1990 =  data.loc[[0,7,52,94,111,126,183], "1990"]
+    return list(df1990), list(dff1990)
+def piedf2000(self):
+    data = data_table1(1)  
+    df2000 = data.loc[[0,7,52,94,111,126,183], "CounTries"]
+    dff2000 =  data.loc[[0,7,52,94,111,126,183], "2000"]
+    return list(df2000), list(dff2000)
+def piedf2010(self):
+    data = data_table1(1)  
+    df2010 = data.loc[[0,7,52,94,111,126,183], "CounTries"]
+    dff2010 =  data.loc[[0,7,52,94,111,126,183], "2010"]
+    return list(df2010), list(dff2010)
+#dân số các nước đông nam á
+def dna1980(self):
+     data = data_table1(1) 
+     fdna1980 = data.loc[[189,190,191,199,204,206,216,218,222,223,227], "CounTries"]
+     ffdna1980 = data.loc[[189,190,191,199,204,206,216,218,222,223,227], "1980"]
+     return list(fdna1980), list(ffdna1980)
+##BARCHART
+def bardf1990(self):
+    data = data_table1(1)  
+    df1990 = data.loc[[0,7,52,94,111,126,183], "CounTries"]
+    dff1990 =  data.loc[[0,7,52,94,111,126,183], "1990"]
+    return list(df1990),list(dff1990)
+def bardf1980(self):
+    data = data_table1(1)
+    df1980 = data.loc[[0,7,52,94,111,126,183], "CounTries"]
+    dff1980 =  data.loc[[0,7,52,94,111,126,183], "1980"]
+    return list(df1980),list(dff1980)
+def bardf2000(self):
+    data = data_table1(1)  
+    df2000 = data.loc[[0,7,52,94,111,126,183], "CounTries"]
+    dff2000 =  data.loc[[0,7,52,94,111,126,183], "2000"]
+    return list(df2000),list(dff2000)
+def bardf2010(self):
+    data = data_table1(1)
+    df2010 = data.loc[[0,7,52,94,111,126,183], "CounTries"]
+    dff2010 =  data.loc[[0,7,52,94,111,126,183], "2010"]
+    return list(df2010),list(dff2010)
 
 
-
-
-
-
-
-
-
-
-
-print(CounTries1(1))
-print(d1981(1))
-print(data_table(1))
 # Create your views here.
 User = get_user_model()
 class HomeView(View):
@@ -352,9 +434,24 @@ def base(request):
 def home(request):
      return render(request, 'pages/home.html')
 def bar_chart(request): 
-     return render(request,'pages/bar_chart.html')
+     x1980,y1980 = bardf1980(1)
+     x1990,y1990 = bardf1990(1)
+     x2000,y2000 = bardf2000(1)
+     x2010,y2010 = bardf2010(1)
+     context=context={"x1980":x1980,'y1980':y1980,"x1990":x1990,'y1990':y1990,"x2000":x2000,'y2000':y2000,"x2010":x2010,'y2010':y2010}
+     return render(request,'pages/bar_chart.html',context)
 def line_chart(request):
-     return render(request, 'pages/line_chart.html')
+     xYear = Year(1)
+     yWorld = World(1)
+     yNA = North_America(1)
+     yCSA = Central_South_America(1)
+     yEurope = Europe(1)
+     yEurasia = Eurasia(1)
+     yME = Middle_East(1)
+     yA = Africa(1)
+     yAO = Asia_Ocean(1)
+     context = context = {"xYear": xYear, 'yWorld':yWorld, 'yNA':yNA, 'yCSA':yCSA, 'yEurope':yEurope, 'yEurasia':yEurasia, 'yME':yME, 'yA':yA, 'yAO':yAO}
+     return render(request, 'pages/line_chart.html',context)
 def scatter_chart(request):
      c0 = CounTries(1)
      d0 = d1980(1)
@@ -428,6 +525,15 @@ def scatter_chart(request):
                            "c28":c28,'d28':d28,"c29":c29,'d29':d29,"c30":c30,'d30':d30}
      return render(request, 'pages/scatter_chart.html',context)
 def pie_chart(request):
-     return render(request, 'pages/pie_chart.html')
+     #dan số các khu vực 
+     df1980, dff1980= piedf1980(1)
+     df1990, dff1990 = piedf1990(1)
+     df2000, dff2000 = piedf2000(1)
+     df2010, dff2010 = piedf2010(1)
+     #dân số các nước ĐNA 
+     fdna1980, ffdna1980 = dna1980(1)
+     context=context={"df1980":df1980,'dff1980':dff1980,"df1990":df1990,'dff1990':dff1990,"df2000":df2000,'dff2000':dff2000,"df2010":df2010,'dff2010':dff2010,
+     "fdna1980":fdna1980,'ffdna1980':ffdna1980}
+     return render(request, 'pages/pie_chart.html',context)
 def gant_chart(request):
      return render(request, 'pages/gant_chart.html')     
