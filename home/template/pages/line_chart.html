@@ -152,24 +152,26 @@ var myChart2 = new Chart(ctx2, {
 {% block content %}
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-2" >
             <ul style="list-style-type: none;">
                 <li>
-                    <a href="/bar_chart">Bar</a>
+                    <h3><a href="/bar_chart">Bar</a></h3>
                 </li>
                 <li>
-                    <a href="/scatter_chart">Scatter</a>
+                  <h3><a href="/scatter_chart">Scatter</a></h3>
                 </li>
                 <li>
-                    <a href="/line_chart">Line</a>
+                  <h3><a href="/line_chart">Line</a></h3>
                 </li>
-                <li><a href="/pie_chart">Pie</a></li>
+                <li><h3><a href="/pie_chart">Pie</a></h3></li>
                 <li>
-                    <a href="/gant_chart">gantt</a>
+                  <h3><a href="/gant_chart">Gantt</a></h3>
                 </li>
             </ul>
         </div>
         <div class="col-sm-9" url-endpoint='{% url "api-data" %}' style="position: relative; width:60vw">
+            <h1>LINE CHART</h1>
+            <p>LINE CHART được sử dụng khi dữ liệu được mô tả phụ thuộc vào thời gian với trục hoành biểu diễn thời gian, trục tung biểu diển Số lượng dân số</p>
             <h3>DÂN SỐ THẾ GIỚI TỪ NĂM 1980 - 2010</h3>
             <canvas id="myChart1" width="800" height="400" style="width:5vw "></canvas>
             <h4><b>*Đánh giá tốc gia tăng dân số:</b></h4>

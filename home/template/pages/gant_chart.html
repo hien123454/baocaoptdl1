@@ -3,29 +3,130 @@
 Gant Chart
 {% endblock %}
 
+<style>
+    .graph_container{
+  display:block;
+  width:600px;
+}
+</style>
+<script>
+    {% block jquery %}
+        var endpoint = '/api/chart/data/'
+        $.ajax({
+            method: "GET",
+            url: endpoint,
+            success: function(data) {
+                console.log(data)
+                console.log(data.customers * 234)
+                setChart()
+            },
+            error: function(error_data) {
+                console.log("error")
+                console.log(error_data)
+            }
+        })
+    var barOptions_stacked = {
+    hover :{
+        animationDuration:10
+    },
+    scales: {
+        xAxes: [{
+            label:"Duration",
+            ticks: {
+                beginAtZero:true,
+                fontFamily: "'Open Sans Bold', sans-serif",
+                fontSize:11,
+                callback: function(value, index, values) {
+                    // for a value (tick) equals to 8
+                    return xLabels[value];
+                    // 'junior-dev' will be returned instead and displayed on your chart
+                }
+                
+            },
+            scaleLabel:{
+                display:false
+            },
+            gridLines: {
+            }, 
+            stacked: true
+        }],
+        yAxes: [{
+            gridLines: {
+                display:false,
+                color: "#fff",
+                zeroLineColor: "#fff",
+                zeroLineWidth: 0
+            },
+            ticks: {
+                fontFamily: "'Open Sans Bold', sans-serif",
+                fontSize:11
+            },
+            stacked: true
+        }]
+    },
+    legend:{
+        display:false
+    },
+};
+
+var xLabels = {
+    0:'26/09/2020', 100 : '02/10/2020', 200 : '9/10/2020', 300 : '16/10/2020', 400 : '23/10/2020',
+    500 : '30/10/2020',700 : '7/11/2020', 800 : '14/11/2020',
+}
+var ctx = document.getElementById("myChart");
+var myChart = new Chart(ctx, {    
+    type: 'horizontalBar',
+    data: {
+        labels: ["Đăng ký nhóm và thảo luận dữ liệu đồ án", "Đăng ký dữ liệu đồ án", "Họp nhóm, phân chia công việc cho mỗi thành viên",
+         "Thống kê dữ liệu thiếu và xử lý dữ liệu","Trình bày dữ liệu","Mô tả dữ liệu và khảo sát dạng phân phối",
+         "Họp nhóm thuyết trình online công việc của mỗi cá nhân","Nộp báo cáo đồ án dữ liệu"],
+        
+        datasets: [{
+            data: [0,100, 200, 300, 400, 500, 700, 800],
+            backgroundColor: "rgba(63,103,126,0)",
+            hoverBackgroundColor: "rgba(50,90,100,0)"
+            
+        },{
+            data: [100, 100, 100, 100, 100, 200, 100, 100],
+            backgroundColor: ['red', 'green', 'blue', 'yellow','Lime','Teal','Magenta ','Olive'],
+        }]
+    },
+    options: barOptions_stacked,
+});
+
+// this part to make the tooltip only active on your real dataset
+var originalGetElementAtEvent = myChart.getElementAtEvent;
+myChart.getElementAtEvent = function (e) {
+    return originalGetElementAtEvent.apply(this, arguments).filter(function (e) {
+        return e._datasetIndex === 1;
+    });
+}   
+{%endblock%}
+</script>
 {% block content %}
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-2" >
             <ul style="list-style-type: none;">
                 <li>
-                    <a href="/bar_chart">Bar</a>
+                    <h3><a href="/bar_chart">Bar</a></h3>
                 </li>
                 <li>
-                    <a href="/scatter_chart">Scatter</a>
+                  <h3><a href="/scatter_chart">Scatter</a></h3>
                 </li>
                 <li>
-                    <a href="/line_chart">Line</a>
+                  <h3><a href="/line_chart">Line</a></h3>
                 </li>
-                <li><a href="/pie_chart">Pie</a></li>
+                <li><h3><a href="/pie_chart">Pie</a></h3></li>
                 <li>
-                    <a href="/gant_chart">gantt</a>
+                  <h3><a href="/gant_chart">Gantt</a></h3>
                 </li>
             </ul>
         </div>
-        <div class="col-sm-9">
-            hello gant_chart
-        </div>
+            <H1>GANTT CHART</H1>
+            <div class="graph_container" style="height: auto; width:900px; margin-left: 20vw;">
+                <canvas id="myChart" ></canvas>
+                </div>
     </div>
 </div>
 

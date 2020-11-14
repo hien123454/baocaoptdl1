@@ -24,46 +24,6 @@ var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: {{x1990|safe}} ,
-        datasets: [{
-            data: {{y1990|safe}},
-            label: 'Biểu đồ Thể hiện chênh lệch dân số các khu vực năm 1990',
-            
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-                'rgba(123, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)',
-                'rgba(123, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
-});
-var hien = document.getElementById('Chart2').getContext('2d');
-var Chart2 = new Chart(hien, {
-    type: 'bar',
-    data: {
         labels: {{x1980|safe}} ,
         datasets: [{
             data: {{y1980|safe}},
@@ -94,7 +54,49 @@ var Chart2 = new Chart(hien, {
         scales: {
             yAxes: [{
                 ticks: {
-                    beginAtZero: true
+                    beginAtZero: true,
+                    suggestedMax: 4000
+                }
+            }]
+        }
+    }
+});
+var hien = document.getElementById('Chart2').getContext('2d');
+var Chart2 = new Chart(hien, {
+    type: 'bar',
+    data: {
+        labels: {{x1990|safe}} ,
+        datasets: [{
+            data: {{y1990|safe}},
+            label: 'Biểu đồ Thể hiện chênh lệch dân số các khu vực năm 1990',
+            
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(123, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(123, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true,
+                    suggestedMax: 4000
                 }
             }]
         }
@@ -107,7 +109,7 @@ var Chart3 = new Chart(hien1, {
         labels: {{x2000|safe}} ,
         datasets: [{
             data: {{y2000|safe}},
-            label: 'Biểu đồ thể hiện tương quan dân số các khu vực 1980',
+            label: 'Biểu đồ thể hiện tương quan dân số các khu vực 2000',
             
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
@@ -134,7 +136,8 @@ var Chart3 = new Chart(hien1, {
         scales: {
             yAxes: [{
                 ticks: {
-                    beginAtZero: true
+                    beginAtZero: true,
+                    suggestedMax: 4000
                 }
             }]
         }
@@ -147,7 +150,7 @@ var Chart4 = new Chart(hien2, {
         labels: {{x2010|safe}} ,
         datasets: [{
             data: {{y2010|safe}},
-            label: 'Biểu đồ Thể hiện tương quan dân số các khu vực 1990',
+            label: 'Biểu đồ Thể hiện tương quan dân số các khu vực 2010',
             
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
@@ -174,7 +177,8 @@ var Chart4 = new Chart(hien2, {
         scales: {
             yAxes: [{
                 ticks: {
-                    beginAtZero: true
+                    beginAtZero: true,
+                    suggestedMax: 4000
                 }
             }]
         }
@@ -185,40 +189,47 @@ var Chart4 = new Chart(hien2, {
 {% block content %}
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-2" >
             <ul style="list-style-type: none;">
                 <li>
-                    <a href="/bar_chart">Bar</a>
+                    <h3><a href="/bar_chart">Bar</a></h3>
                 </li>
                 <li>
-                    <a href="/scatter_chart">Scatter</a>
+                  <h3><a href="/scatter_chart">Scatter</a></h3>
                 </li>
                 <li>
-                    <a href="/line_chart">Line</a>
+                  <h3><a href="/line_chart">Line</a></h3>
                 </li>
-                <li><a href="/pie_chart">Pie</a></li>
+                <li><h3><a href="/pie_chart">Pie</a></h3></li>
                 <li>
-                    <a href="/gant_chart">gantt</a>
+                  <h3><a href="/gant_chart">Gantt</a></h3>
                 </li>
             </ul>
         </div>
-        <div class="col-sm-6" url-endpoint='{% url "api-data" %}' style="position: relative; width:45vw">
+        <div>
+            <h1>BAR CHART</h1>
+            <p>biểu đồ này dùng để so sánh tương quan về độ lớn giữa các đại lượng hoặc thể hiện một thành phần cơ cấu trong tổng thể</p>
+            <p>Bar Chart thường được dùng khi cần phân loại dữ liệu và so sánh độ tương quan giữa chúng.Sử dụng để so sánh sự chênh lệch dân số giữa các khu vực trong 1 năm</p>
+        </div>
+    </div> 
+    <div class="row">   
+        <div class="col-sm-6" url-endpoint='{% url "api-data" %}' style="margin-left: 3vw;position: relative; width:45vw">
             
             <canvas id="myChart" width="auto" height="auto"></canvas>
             
         </div>
-        <div class="col-sm-6" url-endpoint='{% url "api-data" %}' style="position: relative; width:45vw">
+        <div class="col-sm-6" url-endpoint='{% url "api-data" %}' style="margin-left: 4vw;position: relative; width:45vw">
             
             
             <canvas id="Chart2" width="auto" height="auto"></canvas>
         </div>
         <div class="row"> 
-            <div class="col-sm-6" url-endpoint='{% url "api-data" %}' style="position: relative; width:45vw">
+            <div class="col-sm-6" url-endpoint='{% url "api-data" %}' style="margin-left: 3vw;position: relative; width:45vw">
             
             <canvas id="Chart3" width="auto" height="auto"></canvas>
             
         </div>
-        <div class="col-sm-6" url-endpoint='{% url "api-data" %}' style="position: relative; width:45vw">
+        <div class="col-sm-6" url-endpoint='{% url "api-data" %}' style="margin-left: 4vw;position: relative; width:45vw">
             
             
             <canvas id="Chart4" width="auto" height="auto"></canvas>

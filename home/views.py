@@ -11,7 +11,7 @@ import firebase_admin
 import pandas as pd
 import numpy as np
 
-cred = credentials.Certificate('home/keythai.json')
+cred = credentials.Certificate('home/keyduc.json')
 default_app = initialize_app(cred)
 db = firestore.client()
 
